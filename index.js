@@ -1,4 +1,4 @@
-let Browser = function (userAgent) {
+const Browser = function (userAgent) {
   let u = userAgent || navigator.userAgent;
   let _this = this;
   let match = {
@@ -111,3 +111,4 @@ function getBrowser() {
 export {
   getBrowser
 }
+module.exports = getBrowser;

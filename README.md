@@ -1,4 +1,4 @@
-# 获取浏览器信息
+# 获取浏览器信息(use js to get brower navigator information)
 
 - 得到信息实例如下：
 
