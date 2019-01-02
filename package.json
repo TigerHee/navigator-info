@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TigerHee/navigator.git"
+    "url": "git+https://github.com/TigerHee/navigator-info.git"
   },
   "keywords": [
     "js",
@@ -18,7 +18,7 @@
   "author": "tigerHee",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TigerHee/navigator/issues"
+    "url": "https://github.com/TigerHee/navigator-info/issues"
   },
-  "homepage": "https://github.com/TigerHee/navigator#readme"
+  "homepage": "https://github.com/TigerHee/navigator-info#readme"
 }

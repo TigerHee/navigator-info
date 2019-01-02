@@ -1,4 +1,4 @@
-# 获取浏览器信息(use js to get brower navigator information)
+## 获取浏览器信息(use js to get brower navigator information)
 
 - 使用方法：
 ```sh
