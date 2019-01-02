@@ -1,7 +1,7 @@
 const Browser = function (userAgent) {
-  let u = userAgent || navigator.userAgent;
-  let _this = this;
-  let match = {
+  var u = userAgent || navigator.userAgent;
+  var _this = this;
+  var match = {
     //内核
     Trident: u.indexOf('Trident') > 0 || u.indexOf('NET CLR') > 0,
     Presto: u.indexOf('Presto') > 0,
@@ -47,7 +47,7 @@ const Browser = function (userAgent) {
     match.Mobile = !match.iPad;
   }
   //基本信息
-  let hash = {
+  var hash = {
     engine: ['WebKit', 'Trident', 'Gecko', 'Presto'],
     browser: ['Chrome', 'IE', 'Firefox', 'Opera', 'Safari', 'UC', 'QQ', 'BaiDu', 'Maxthon', 'SouGou', 'LBBROWSER', 'Wechat'],
     os: ['Windows', 'Linux', 'Mac', 'Android', 'iOS', 'iPhone', 'iPad', 'WP', 'BlackBerry', 'MeeGo', 'Symbian'],
@@ -55,24 +55,24 @@ const Browser = function (userAgent) {
   };
   _this.device = 'PC';
   _this.language = (function () {
-    let g = (navigator.browserLanguage || navigator.language).toLowerCase();
+    var g = (navigator.browserLanguage || navigator.language).toLowerCase();
     return g === "c" ? "zh-cn" : g;
   })();
-  for (let s in hash) {
-    for (let i = 0; i < hash[s].length; i++) {
-      let value = hash[s][i];
+  for (var s in hash) {
+    for (var i = 0; i < hash[s].length; i++) {
+      var value = hash[s][i];
       if (match[value]) {
         _this[s] = value;
       }
     }
   }
   //版本信息
-  let version = {
+  var version = {
     'Chrome': function () {
       return u.replace(/^.*Chrome\/([\d.]+).*$/, '$1');
     },
     'IE': function () {
-      let v = u.replace(/^.*MSIE ([\d.]+).*$/, '$1');
+      var v = u.replace(/^.*MSIE ([\d.]+).*$/, '$1');
       if (v === u) {
         v = u.replace(/^.*rv:([\d.]+).*$/, '$1');
       }
@@ -107,8 +107,5 @@ const Browser = function (userAgent) {
 };
 function getBrowser() {
   return new Browser()
-}
-export {
-  getBrowser
 }
 module.exports = getBrowser;
