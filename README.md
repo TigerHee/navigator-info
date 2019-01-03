@@ -1,13 +1,17 @@
 ## 获取浏览器信息(use js to get brower navigator information)
 
-- 使用方法：
+### Installation
+```sh
+  npm i navigator-info --save
+```
+
+### Usage
 ```sh
   var navigatorInfo = require("navigator-info");
   navigatorInfo()
 ```
 
-- 得到信息实例如下：
-
+### Return information
 ```sh
   {
     "device":"Mobile",
