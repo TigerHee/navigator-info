@@ -1,4 +1,6 @@
-## 获取浏览器信息(use js to get brower navigator information)
+# navigator-info.js
+
+## use js to get brower navigator information ( 获取浏览器信息 )
 
 ### Installation
 ```sh
