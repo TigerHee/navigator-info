@@ -1,6 +1,6 @@
 const Browser = function (userAgent) {
-  var u = userAgent || navigator.userAgent;
-  var that = this;
+  var u = userAgent || navigator.userAgent
+  var that = this
   var match = {
     //The kernel
     Trident: u.indexOf('Trident') > 0 || u.indexOf('NET CLR') > 0,
@@ -20,6 +20,7 @@ const Browser = function (userAgent) {
     Safari: u.indexOf('Safari') > 0,
     Chrome: u.indexOf('Chrome') > 0 || u.indexOf('CriOS') > 0,
     Wechat: u.indexOf('MicroMessenger') > 0,
+    Edge: u.indexOf('Edge') > 0 || u.indexOf('edge') > 0,
     //System or platform
     Windows: u.indexOf('Windows') > 0,
     Linux: u.indexOf('Linux') > 0,
@@ -34,80 +35,82 @@ const Browser = function (userAgent) {
     iPad: u.indexOf('iPad') > 0,
     //equipment
     Mobile: u.indexOf('Mobi') > 0 || u.indexOf('iPh') > 0 || u.indexOf('480') > 0,
-    Tablet: u.indexOf('Tablet') > 0 || u.indexOf('iPad') > 0 || u.indexOf('Nexus 7') > 0
-  };
+    Tablet: u.indexOf('Tablet') > 0 || u.indexOf('iPad') > 0 || u.indexOf('Nexus 7') > 0,
+  }
   //correction
   if (match.Chrome) {
-    match.Chrome = !(match.Opera + match.BaiDu + match.Maxthon + match.SouGou + match.UC + match.QQ + match.LBBROWSER);
+    match.Chrome = !(match.Opera + match.BaiDu + match.Maxthon + match.SouGou + match.UC + match.QQ + match.LBBROWSER + match.Edge)
   }
   if (match.Safari) {
-    match.Safari = !(match.Chrome + match.Opera + match.BaiDu + match.Maxthon + match.SouGou + match.UC + match.QQ + match.LBBROWSER);
+    match.Safari = !(match.Chrome + match.Opera + match.BaiDu + match.Maxthon + match.SouGou + match.UC + match.QQ + match.LBBROWSER + match.Edge)
   }
   if (match.Mobile) {
-    match.Mobile = !match.iPad;
+    match.Mobile = !match.iPad
   }
   //The basic information
   var hash = {
     engine: ['WebKit', 'Trident', 'Gecko', 'Presto'],
-    browser: ['Chrome', 'IE', 'Firefox', 'Opera', 'Safari', 'UC', 'QQ', 'BaiDu', 'Maxthon', 'SouGou', 'LBBROWSER', 'Wechat'],
+    browser: ['Chrome', 'IE', 'Firefox', 'Opera', 'Safari', 'UC', 'QQ', 'BaiDu', 'Maxthon', 'SouGou', 'LBBROWSER', 'Wechat', 'Edge'],
     os: ['Windows', 'Linux', 'Mac', 'Android', 'iOS', 'iPhone', 'iPad', 'WP', 'BlackBerry', 'MeeGo', 'Symbian'],
-    device: ['Mobile', 'Tablet']
-  };
-  that.device = 'PC';
+    device: ['Mobile', 'Tablet'],
+  }
+  that.device = 'PC'
   that.language = (function () {
-    var g = (navigator.browserLanguage || navigator.language).toLowerCase();
-    return g === "c" ? "zh-cn" : g;
-  })();
+    var g = (navigator.browserLanguage || navigator.language).toLowerCase()
+    return g === 'c' ? 'zh-cn' : g
+  })()
   for (var s in hash) {
     for (var i = 0; i < hash[s].length; i++) {
-      var value = hash[s][i];
+      var value = hash[s][i]
       if (match[value]) {
-        that[s] = value;
+        that[s] = value
       }
     }
   }
   //Version information
   var version = {
     Chrome: function () {
-      return u.replace(/^.*Chrome\/([\d.]+).*$/, '$1');
+      return u.replace(/^.*Chrome\/([\d.]+).*$/, '$1')
+    },
+    Edge: function () {
+      return u.replace(/^.*Edge\/([\d.]+).*$/, '$1')
     },
     IE: function () {
-      var v = u.replace(/^.*MSIE ([\d.]+).*$/, '$1');
+      var v = u.replace(/^.*MSIE ([\d.]+).*$/, '$1')
       if (v === u) {
-        v = u.replace(/^.*rv:([\d.]+).*$/, '$1');
+        v = u.replace(/^.*rv:([\d.]+).*$/, '$1')
       }
-      return v !== u ? v : '';
+      return v !== u ? v : ''
     },
     Firefox: function () {
-      return u.replace(/^.*Firefox\/([\d.]+).*$/, '$1');
+      return u.replace(/^.*Firefox\/([\d.]+).*$/, '$1')
     },
     Safari: function () {
-      return u.replace(/^.*Version\/([\d.]+).*$/, '$1');
+      return u.replace(/^.*Version\/([\d.]+).*$/, '$1')
     },
     Maxthon: function () {
-      return u.replace(/^.*Maxthon\/([\d.]+).*$/, '$1');
+      return u.replace(/^.*Maxthon\/([\d.]+).*$/, '$1')
     },
     QQ: function () {
-      return u.replace(/^.*QQBrowser\/([\d.]+).*$/, '$1');
+      return u.replace(/^.*QQBrowser\/([\d.]+).*$/, '$1')
     },
     BaiDu: function () {
-      return u.replace(/^.*BIDUBrowser[\s\/]([\d.]+).*$/, '$1');
+      return u.replace(/^.*BIDUBrowser[\s\/]([\d.]+).*$/, '$1')
     },
     UC: function () {
-      return u.replace(/^.*UBrowser\/([\d.]+).*$/, '$1');
+      return u.replace(/^.*UBrowser\/([\d.]+).*$/, '$1')
     },
     Wechat: function () {
-      return u.replace(/^.*MicroMessenger\/([\d.]+).*$/, '$1');
-    }
-  };
-  that.version = '';
-  if (version[that.browser]) {
-    that.version = version[that.browser]();
+      return u.replace(/^.*MicroMessenger\/([\d.]+).*$/, '$1')
+    },
   }
-};
+  that.version = ''
+  if (version[that.browser]) {
+    that.version = version[that.browser]()
+  }
+}
 
 function navigatorInfo(userAgent) {
   return new Browser(userAgent)
 }
-
-module.exports = navigatorInfo;
+module.exports = navigatorInfo
